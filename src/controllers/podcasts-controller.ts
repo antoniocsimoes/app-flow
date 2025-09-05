@@ -4,8 +4,10 @@ import { serviceFilterEpsodes } from "../services/filter-episodes-services";
 import { ContentType } from "../utils/content-type";
 import { FilterPodCastModel } from "../models/podcast-transfer-model";
 
+const DEFAULT_CONTENT = { "Content-Type": ContentType.JSON };
+
 const generciFunction = (content: FilterPodCastModel, res: ServerResponse) =>{
-  res.writeHead(content.statusCode, { "Content-Type": ContentType.JSON });
+  res.writeHead(content.statusCode, DEFAULT_CONTENT);
   res.write(JSON.stringify(content.body));
   res.end();
 }
